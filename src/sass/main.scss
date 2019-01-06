@@ -1,0 +1,29 @@
+$font-size-base: 0.96rem;
+$theme-colors: (
+  "primary": #0074d9,
+  "danger": #F0166F
+);
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap';
+//@import 'style';
+
+body {
+  background: #eee;
+}
+#bodyLogin {
+  max-width: 400px;
+  margin:0 auto;
+  padding-top:100px;
+  .login-bg {
+    background:#fff;
+    position: relative;
+  }
+}
