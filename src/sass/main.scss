@@ -4,9 +4,9 @@ $theme-colors: (
   "danger": #F0166F
 );
 // Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom'
 import { logoutUser, clearCurrentProfile } from '../../actions/auth';
 import { createNotification } from '../../utils/helpers'
+import Document from '../layout/Document'
 import config from '../../config'
 import lang from '../../langs'
 
@@ -23,19 +24,21 @@ class Dashboard extends Component {
     render() {
         const { user } = this.props.auth.user
         return (
-            <div className="container">
-                <div className="row justify-content-md-center text-center mt-5">
-                    <div className="col">
-                        <h2>Hi, {user.name}!</h2>
-                        <p>Just show a dashboard page</p>
-                        <p>Follow Github Page <a href="https://github.com/agilworld">https://github.com/agilworld</a></p>
-                        <br />
-                        <button type="button" className="btn btn-danger btn-lg" onClick={this.onLogoutClick.bind(this)}>
-                            {lang('logout')}
-                        </button>
+            <Document title="Dashboard Administrator" className="dashboard-page">
+                <div className="container">
+                    <div className="row justify-content-md-center text-center mt-5">
+                        <div className="col">
+                            <h2>Hi, {user.name}!</h2>
+                            <p>Just show a dashboard page</p>
+                            <p>Follow Github Page <a href="https://github.com/agilworld/ReactJS-Auth-JWT-with-Bootstrap-4">https://github.com/agilworld/ReactJS-Auth-JWT-with-Bootstrap-4</a></p>
+                            <br />
+                            <button type="button" className="btn btn-danger btn-lg" onClick={this.onLogoutClick.bind(this)}>
+                                {lang('logout')}
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Document>
         );
     }
 }

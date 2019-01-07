@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import _ from 'lodash'
-import lang from '../../langs'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions/auth';
 import { loginValidate } from '../../validations/authValidate';
 import { findStatusText, createNotification } from '../../utils/helpers'
+import Document from '../layout/Document'
+import _ from 'lodash'
+import lang from '../../langs'
 import logo from '../../img/logo.png'
 
 class Login extends Component {
@@ -85,60 +86,67 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div id="bodyLogin">
-                <div className="align-self-center text-center mb-4">
-                    <img src={logo} width="300" alt="Logo" />
-                </div>
+            <Document title="Login Administrator" className="login-page">
+                <div id="bodyLogin">
+                    <div className="align-self-center text-center mb-4">
+                        <img src={logo} width="300" alt="Logo" />
+                    </div>
 
-                <div className="shadow-sm p-4 mb-5 bg-white rounded">
+                    <div className="shadow-sm p-4 mb-5 bg-white rounded">
 
-                    <div className="col align-self-center w-auto-xs mb-3">
-                        <div className="text-color">
-                            <div className="text-uppercase text-muted text-center mb-4 text-sm">
-                                Sign in with your
+                        <div className="col align-self-center w-auto-xs mb-3">
+                            <div className="text-color">
+                                <div className="text-uppercase text-muted text-center mb-4 text-sm">
+                                    Sign in with your
+                                </div>
+
+                                <form name="formLogin" noValidate>
+                                    <div className="form-label-group mb-4">
+                                        <input
+                                            type="email"
+                                            name="username"
+                                            id="email"
+                                            placeholder="Email Address"
+                                            className={classnames('form-control form-control-lg', {
+                                                'is-invalid': errors.username
+                                            })}
+                                            onChange={this.onChange}
+                                            value={this.state.username}
+                                        />
+                                        {errors.username && <div className="invalid-feedback">{errors.username}.</div>}
+                                    </div>
+
+                                    <div className="form-label-group mb-4">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className={classnames('form-control form-control-lg', {
+                                                'is-invalid': errors.password
+                                            })}
+                                            placeholder="Password"
+                                            onChange={this.onChange}
+                                            value={this.state.password}
+                                        />
+                                        {errors.password && <div className="invalid-feedback">{errors.password}.</div>}
+                                    </div>
+
+                                    <div className="custom-control custom-checkbox mr-sm-2 mb-3">
+                                        <input type="checkbox" className="custom-control-input" id="rememberMe" />
+                                        <label className="custom-control-label" htmlFor="rememberMe">{lang('remember_me')}</label>
+                                    </div>
+
+                                    <button type="button" id="loginSubmit" disabled={this.props.loaded ? true : false} onClick={this.onSubmit} className="btn btn-danger btn-block btn-lg">{this.props.loaded ? 'Loading...' : 'Sign In'}</button>
+                                </form>
                             </div>
-
-                            <form name="formLogin" noValidate>
-                                <div className="form-label-group mb-4">
-                                    <input
-                                        type="email"
-                                        name="username"
-                                        id="email"
-                                        placeholder="Email Address"
-                                        className={classnames('form-control form-control-lg', {
-                                            'is-invalid': errors.username
-                                        })}
-                                        onChange={this.onChange}
-                                        value={this.state.username}
-                                    />
-                                    {errors.username && <div className="invalid-feedback">{errors.username}.</div>}
-                                </div>
-
-                                <div className="form-label-group mb-4">
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        className={classnames('form-control form-control-lg', {
-                                            'is-invalid': errors.password
-                                        })}
-                                        placeholder="Password"
-                                        onChange={this.onChange}
-                                        value={this.state.password}
-                                    />
-                                    {errors.password && <div className="invalid-feedback">{errors.password}.</div>}
-                                </div>
-
-                                <div className="custom-control custom-checkbox mr-sm-2 mb-3">
-                                    <input type="checkbox" className="custom-control-input" id="rememberMe" />
-                                    <label className="custom-control-label" htmlFor="rememberMe">{lang('remember_me')}</label>
-                                </div>
-
-                                <button type="button" id="loginSubmit" disabled={this.props.loaded ? true : false} onClick={this.onSubmit} className="btn btn-danger btn-block btn-lg">{this.props.loaded ? 'Loading...' : 'Sign In'}</button>
-                            </form>
                         </div>
                     </div>
+
+                    <div className="text-center  text-muted ">
+                        <p>Fork this repo <br /> <small><a target="_blank" href="https://github.com/agilworld/ReactJS-Auth-JWT-with-Bootstrap-4">ReactJS-Auth-JWT-with-Bootstrap-4</a></small></p>
+                    </div>
+
                 </div>
-            </div>
+            </Document>
         )
     }
 }

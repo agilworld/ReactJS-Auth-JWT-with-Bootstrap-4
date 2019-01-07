@@ -15,7 +15,7 @@ class Navbar extends Component {
     }
 
     onForkClick(e) {
-        window.location.href = 'https://github.com/agilworld'
+        window.location.href = 'https://github.com/agilworld/ReactJS-Auth-JWT-with-Bootstrap-4'
     }
 
     onLogoutClick(e) {
