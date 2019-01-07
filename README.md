@@ -12,6 +12,14 @@ Boilerplate React JS Auth JWT Sample with Bootstrap 4
 - Support multi languages
 - Sass enabled
 
+## Page Available 
+- Login page
+- Dashboard
+
+## Future Plan 
+- Forgot password
+- Profile page
+
 ## Available Scripts
 
 In the project directory, you can run:
